@@ -74,6 +74,9 @@ come back to do the full fledged development.
 ![openPreviewNewTab.png](images%2FopenPreviewNewTab.png)
 
 We will be using open api url to fetch food items
+from below sample. Lets try to hit this url to see the results.
+https://world.openfoodfacts.org/cgi/search.pl?search_terms=burger&page=1&page_size=10&json=1
+
 Lets write below simple method to fetch food items
 
 ```
@@ -160,7 +163,7 @@ Change App.jsx code to as below
 
 ```
 
-<div className="App">
+<div className="app">
         <h1>Food Mart</h1>
         <button onClick={searchFoodItems}>fetch food</button>
         <div className="container">
@@ -207,7 +210,69 @@ Lets create a food card which can display above details in a nice manner
 Now you will start seeing food list that gets displayed with image
 quantity, expiry date, name.
 
-Now we need to add an oomph to this.
+### Make Food search more dynamic
+All this time we only see results for burger. Lets add a search box with search icon
 
+create search.svg file and copy below code
+![createFile.png](images%2FcreateFile.png)
+![nameFile.png](images%2FnameFile.png)
+```
+<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M29.8594 29.8594L39.4219 39.4219" stroke="#D88769" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M17.9062 33.0469C26.2682 33.0469 33.0469 26.2682 33.0469 17.9062C33.0469 9.54431 26.2682 2.76562 17.9062 2.76562C9.54431 2.76562 2.76562 9.54431 2.76562 17.9062C2.76562 26.2682 9.54431 33.0469 17.9062 33.0469Z" stroke="#D88769" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+```
+
+Also add below import in App.jsx
+```
+import SearchIcon from './search.svg'
+```
+
+
+
+```
+const [searchTerm, setSearchTerm] = useState([]);
+
+<div className="search">
+        <input
+          placeholder={'Search for foods'}
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+        <img
+          src={SearchIcon}
+          alt="Search"
+          onClick={() => {
+            searchFoodItems(searchTerm);
+          }}
+        />
+      </div>
+```
+
+We need to update searchFoodItems method to below.
+
+```
+  const searchFoodItems = async (foodName) => {
+    try {
+      foodName = foodName ? foodName : 'burger';
+      const response = await fetch(
+        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
+      );
+      const data = await response.json();
+      setFoodItems(data.products);
+      console.log('foodItems', foodItems);
+    } catch (error) {
+      console.error('Error fetching food items:', error);
+    }
+  };
+```
+
+
+
+Now for a final touch we need to add an oomph and color to this.
+Update App.css with below code.
+[App.css](App.css)
 
 
