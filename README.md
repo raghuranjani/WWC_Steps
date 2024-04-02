@@ -138,8 +138,8 @@ To fix this error we modify code as shown below
 <div className="container">
           <div>{JSON.stringify(foodItems)}</div>
           <div>
-            {foodItems?.map((foodItem) => {
-              return <h1>{foodItem.product_name}</h1>;
+            {foodItems?.map((foodItem, index) => {
+              return <h1 key={index}>{foodItem.product_name}</h1>;
             })}
           </div>
         </div>
