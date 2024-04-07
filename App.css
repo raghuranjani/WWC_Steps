@@ -41,7 +41,7 @@ h1 {
 }
 
 .search {
-    width: 71%;
+    width: 100%;
     margin: 4rem 0 2rem;
 
     display: flex;
@@ -129,7 +129,7 @@ h1 {
     box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
-.food div:nth-of-type(1) {
+.food header {
     position: absolute;
     padding: 16px;
     width: 100%;
@@ -143,17 +143,17 @@ h1 {
     transform: scale(1.05, 1.05);
 }
 
-.food div:nth-of-type(2) {
+.food section {
     width: 100%;
     height: 100%;
 }
 
-.food div:nth-of-type(2) img {
+.food section img {
     height: 100%;
     width: 100%;
 }
 
-.food div:nth-of-type(3) {
+.food footer {
     z-index: 2;
     background-color: #343739;
     padding: 16px 24px 24px 24px;
@@ -164,7 +164,7 @@ h1 {
     left: 0;
 }
 
-.food div:nth-of-type(3) span {
+.food footer span {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     font-size: 13px;
@@ -173,22 +173,22 @@ h1 {
     color: #f0f0f0;
 }
 
-.food div:nth-of-type(3) h3 {
+.food footer h3 {
     margin-top: 5px;
     font-family: 'Roboto Slab', serif;
     color: #f9d3b4;
 }
 
-.food:hover div:nth-of-type(2) {
+.food:hover section {
     height: 100%;
     opacity: 0.3;
 }
 
-.food:hover div:nth-of-type(3) {
+.food:hover footer {
     background-color: transparent;
 }
 
-.food:hover div:nth-of-type(1) {
+.food:hover header {
     opacity: 1;
 }
 
