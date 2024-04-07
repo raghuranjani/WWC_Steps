@@ -1,6 +1,6 @@
 
-
-<H1 align="center">![react.svg](images%2Freact.svg) <strong>React Step by step workshop tutorial</strong></H1>
+<H1 align="center">![react.svg](images%2Freact.svg)</H1>
+<H1 align="center"> <strong>React Step by step workshop tutorial</strong></H1>
 
 
 ## Get started  🚀
