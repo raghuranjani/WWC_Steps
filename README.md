@@ -566,4 +566,4 @@ Update App.css with below code.
 
 ![finalSearchWithDosa.png](images%2FfinalSearchWithDosa.png)
 
-🎉 ## Congratulations on completing this workshop
+🎉 ## Congratulations you have successfully completed the workshop
