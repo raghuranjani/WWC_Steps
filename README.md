@@ -1,5 +1,5 @@
 
-<H1 align="center">![react.svg](images%2Freact.svg)</H1>
+<H1 align="center">![reactlogo.png](images%2Freactlogo.png)</H1>
 <H1 align="center"> <strong>React Step by step workshop tutorial</strong></H1>
 
 
@@ -46,7 +46,7 @@ through the setter function within usestate
 ![remove.png](images%2Fremove.png)
 
 
-Remove the highlighted code and replace with below on App.jsx file
+Replace App.jsx file with below set of code.
 ![helloWorld.png](images%2FhelloWorld.png)
 
 ```
@@ -65,6 +65,74 @@ export default App;
 
 ```
 
+I want to show you how the counter works. Lets take a simple example
+where we dont use "usestate" to increment counter
+Replace App.jsx with below set of code
+We have some console log to print counter every time we click the button.
+```
+import './App.css';
+
+function App() {
+  let counter = 0;
+  const clickHandler = () => {
+    console.log('you are clicking me');
+    counter = counter + 1;
+    console.log('counter', counter);
+  };
+
+  return (
+    <>
+      <h1>Hello Welcome to women who code</h1>
+      <button onClick={clickHandler}>click me {counter}</button>
+    </>
+  );
+}
+
+export default App;
+
+
+```
+
+Now open the preview mode to inspect console.
+![openPreview.png](images%2FopenPreview.png)
+![connectToProject.png](images%2FconnectToProject.png)
+
+Right click on browser and choose inspect to inspect the console
+![inspect_console.png](images%2Finspect_console.png)
+
+Now you start to see simple console logs below.
+Now you see the counter getting printed in console but its not rendered
+in the DOM.
+![console_log_counter.png](images%2Fconsole_log_counter.png)
+
+Now replace App.jsx with below set of code.
+```
+import { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [counter, setCounter] = useState(0);
+
+  const clickHandler = () => {
+    setCounter(counter + 1);
+  };
+
+  return (
+    <>
+      <h1>Hello Welcome to women who code</h1>
+      <button onClick={clickHandler}>click me {counter}</button>
+    </>
+  );
+}
+
+export default App;
+
+```
+
+Now you see the counter value incrementing in the DOM.
+
+Thats all about the basics, lets step in to build a real world simple app.
+
 ![foodland_components.png](images%2Ffoodland_components.png)
 
 Lets try to understand different terminologies of React and
@@ -75,15 +143,17 @@ come back to do the full fledged development.
 * JSX
 * Fat arrow function
 * Functional programming
+* Array destructuring
+* Object destructuring
 * Async - await
 * props
 * React Hook - usestate
-* React Hook - useref
+
 
 ![openPreviewNewTab.png](images%2FopenPreviewNewTab.png)
 
 We will be using open api url to fetch food items
-from below sample. Lets try to hit this url to see the results.
+from below sample. Let's try to hit this url to see the results.
 https://world.openfoodfacts.org/cgi/search.pl?search_terms=burger&page=1&page_size=10&json=1
 
 
@@ -275,7 +345,6 @@ Replace App.jsx code with below lines of code
 import { useState } from 'react';
 import './App.css';
 import FoodCards from './FoodCards';
-import SearchIcon from './search.svg';
 
 function App() {
   const [foodItems, setFoodItems] = useState([]);
@@ -309,6 +378,7 @@ function App() {
 }
 
 export default App;
+
 ```
 
 Note that we have changed the highlighted lines of code in App.jsx
@@ -330,6 +400,7 @@ We have also imported the FoodCards
 * expiration_date
 
 Let's create a food card which can display above details in a nice manner
+Replace FoodCards.jsx with below lines of code.
 
 ```
 const FoodCards = (props) => {
@@ -375,7 +446,16 @@ and authoring can be seen.
 
 ## Better user experience with asynchronous call
 Now we have refined the code to make it a bit more readable
-and also introduced the concept of loading with asynchronous call
+and also introduced the concept of loading with asynchronous call.
+
+We have written some logic here to initialize the list
+first it is initialized with empty card.
+We have introduced a loading state
+so whenever user clicks on button loading state will be true
+and once the load is complete it will be false.
+If loading state is true we show "Page is loading..."
+
+
 Replace App.jsx with below lines of code.
 
 
@@ -554,12 +634,12 @@ export default App;
 
 ```
 
+#### Lets try to search for our favorite food items here
+![searchRandom.png](images%2FsearchRandom.png)
+
 You are almost there. Now for a final touch to add some colors and beauty
 lets do the below last step.
 
-
-
-Now for a final touch we need to add an oomph and color to this.
 Update App.css with below code.
 [App.css](App.css)
 
