@@ -1,5 +1,5 @@
 
-<H1 align="center">![reactlogo.png](images%2Freactlogo.png)</H1>
+![reactlogo.png](images%2Freactlogo.png)
 <H1 align="center"> <strong>React Step by step workshop tutorial</strong></H1>
 
 
