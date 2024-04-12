@@ -49,7 +49,7 @@ through the setter function within usestate
 Replace App.jsx file with below set of code.
 ![helloWorld.png](images%2FhelloWorld.png)
 
-```
+```jsx
 import './App.css';
 
 function App() {
@@ -69,7 +69,7 @@ I want to show you how the counter works. Lets take a simple example
 where we dont use "usestate" to increment counter
 Replace App.jsx with below set of code
 We have some console log to print counter every time we click the button.
-```
+```jsx
 import './App.css';
 
 function App() {
@@ -106,7 +106,7 @@ in the DOM.
 ![console_log_counter.png](images%2Fconsole_log_counter.png)
 
 Now replace App.jsx with below set of code.
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 
@@ -159,7 +159,7 @@ https://world.openfoodfacts.org/cgi/search.pl?search_terms=burger&page=1&page_si
 
 Replace below lines of code within App.jsx.
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 
@@ -218,7 +218,7 @@ and print H1 heading tag for each food name.
 
 Replace App.jsx code with the below set of code.
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 
@@ -270,7 +270,7 @@ This will hold good if you are trying to print list of items.
 To fix this error we modify code as shown below
 Replace App.jsx with below set of code.
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 
@@ -330,7 +330,7 @@ Name the file as `FoodCards.jsx`
 Copy paste below set of code to FoodCards.jsx
 
 
-```
+```jsx
 const FoodCards = (props) => {
   const food = props.foodItem;
   return <h1>{food.product_name}</h1>;
@@ -341,7 +341,7 @@ export default FoodCards;
 
 Replace App.jsx code with below lines of code
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 import FoodCards from './FoodCards';
@@ -382,7 +382,7 @@ export default App;
 ```
 
 Note that we have changed the highlighted lines of code in App.jsx
-```
+```jsx
  <div>
       {foodItems?.map((value, index) => {
         return <FoodCards key={index} foodItem={value} />;
@@ -402,7 +402,7 @@ We have also imported the FoodCards
 Let's create a food card which can display above details in a nice manner
 Replace FoodCards.jsx with below lines of code.
 
-```
+```jsx
 const FoodCards = (props) => {
   // instead of writing const foodItem = props.foodItem
   // array destructuring
@@ -434,7 +434,7 @@ export default FoodCards;
 ```
 
 Note that we are using object destructuring to assign fooditem value
-```
+```jsx
 const { foodItem } = props;
 ```
 
@@ -459,7 +459,7 @@ If loading state is true we show "Page is loading..."
 Replace App.jsx with below lines of code.
 
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 import FoodCards from './FoodCards';
@@ -533,7 +533,7 @@ create search.svg file and copy below code
 ![createFile.png](images%2FcreateFile.png)
 
 ![nameFile.png](images%2FnameFile.png)
-```
+```svg
 <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M29.8594 29.8594L39.4219 39.4219" stroke="#D88769" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M17.9062 33.0469C26.2682 33.0469 33.0469 26.2682 33.0469 17.9062C33.0469 9.54431 26.2682 2.76562 17.9062 2.76562C9.54431 2.76562 2.76562 9.54431 2.76562 17.9062C2.76562 26.2682 9.54431 33.0469 17.9062 33.0469Z" stroke="#D88769" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -547,7 +547,7 @@ based on what we select in search box you can dynamically see
 the food item results.
 You also have progress loader which shows up during asynchronous call.
 
-```
+```jsx
 import { useState } from 'react';
 import './App.css';
 import SearchIcon from './search.svg';
