@@ -418,7 +418,7 @@ Replace FoodCards.jsx with below lines of code.
 ```jsx
 const FoodCards = (props) => {
   // instead of writing const foodItem = props.foodItem
-  // array destructuring
+  // object destructuring
   const { foodItem } = props;
   return (
     <article className={'food'}>
@@ -478,63 +478,66 @@ import './App.css';
 import FoodCards from './FoodCards';
 
 function App() {
-  const [foodItems, setFoodItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [foodItems, setFoodItems] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-  const searchFoodItems = async () => {
-    try {
-      setFoodItems([]);
-      setLoading(true);
-      const foodName = 'burger';
+    console.log('rendering component foodItems',foodItems);
+    console.log('rendering component loading',loading)
 
-      const response = await fetch(
-        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
-      );
-      const data = await response.json();
+    const searchFoodItems = async () => {
+        try {
+            setFoodItems([]);
+            setLoading(true);
+            const foodName = 'burger';
 
-      setFoodItems(data.products);
+            const response = await fetch(
+                `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
+            );
+            const data = await response.json();
 
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching food items:', error);
-    }
-  };
+            setFoodItems(data.products);
 
-  let foodList = (
-    <div className={'empty'}>
-      <h2>No food found</h2>
-    </div>
-  );
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching food items:', error);
+        }
+    };
 
-  let loadingCards = <PageisLoading />;
-
-  if (loading) {
-    foodList = loadingCards;
-  }
-
-  if (foodItems.length > 0 && !loading) {
-    foodList = (
-      <div className={'container'}>
-        {foodItems?.map((value, index) => (
-          <FoodCards key={index} foodItem={value} />
-        ))}
-      </div>
+    //initialize food list with empty cards first
+    let foodList = (
+        <div className={'empty'}>
+            <h2>No food found</h2>
+        </div>
     );
-  }
 
-  return (
-    <>
-      <button onClick={searchFoodItems}>fetch food</button>
-      <div className="container">{foodList}</div>
-    </>
-  );
+    if (loading) {
+        foodList = <PageisLoading />;
+    }
+
+    if (foodItems.length > 0 && !loading) {
+        foodList = (
+            <div className={'container'}>
+                {foodItems?.map((value, index) => (
+                    <FoodCards key={index} foodItem={value} />
+                ))}
+            </div>
+        );
+    }
+
+    return (
+        <>
+            <button onClick={searchFoodItems}>fetch food</button>
+            <div className="container">{foodList}</div>
+        </>
+    );
 }
 
 function PageisLoading() {
-  return <h1> Page is loading.....</h1>;
+    return <h1> Page is loading.....</h1>;
 }
 
 export default App;
+
 
 ```
 
@@ -569,84 +572,87 @@ import SearchIcon from './search.svg';
 import FoodCards from './FoodCards';
 
 const App = () => {
-  const [foodItems, setFoodItems] = useState([]);
-  const [searchTerm, setSearchTerm] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [foodItems, setFoodItems] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('burger');
+    const [loading, setLoading] = useState(false);
 
-  const searchFoodItems = async (foodName) => {
-    try {
-      setFoodItems([]);
-      setLoading(true);
-      foodName = foodName ? foodName : 'burger';
-      const response = await fetch(
-        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
-      );
-      const data = await response.json();
-      setFoodItems(data.products);
-      console.log('foodItems', foodItems);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching food items:', error);
-    }
-  };
+    console.log('rendering component foodItems', foodItems);
+    console.log('rendering component loading', loading);
+    console.log('searchTerm', searchTerm);
 
-  let foodList = (
-    <div className={'empty'}>
-      <h2>No food found</h2>
-    </div>
-  );
+    const searchFoodItems = async (foodName) => {
+        try {
+            setFoodItems([]);
+            setLoading(true);
+            foodName = foodName ? foodName : 'burger';
+            const response = await fetch(
+                `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
+            );
+            const data = await response.json();
+            setFoodItems(data.products);
+            console.log('data', data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching food items:', error);
+        }
+    };
 
-  let loadingCards = <PageisLoading />;
-
-  if (loading) {
-    foodList = loadingCards;
-  }
-
-  if (foodItems.length > 0 && !loading) {
-    foodList = (
-      <div className={'container'}>
-        {foodItems?.map((value, index) => (
-          <FoodCards key={index} foodItem={value} />
-        ))}
-      </div>
+    let foodList = (
+        <div className={'empty'}>
+            <h2>No food found</h2>
+        </div>
     );
-  }
 
-  return (
-    <main className="app">
-      {/* header */}
-      <h1>Food Land</h1>
+    let loadingCards = <PageisLoading />;
 
-      {/* search */}
-      <search className="search">
-        <input
-          placeholder={'Search for foods'}
-          value={searchTerm}
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
-        <img
-          src={SearchIcon}
-          alt="Search"
-          onClick={() => {
-            searchFoodItems(searchTerm);
-          }}
-        />
-      </search>
+    if (loading) {
+        foodList = loadingCards;
+    }
 
-      {/* foodList */}
-      {foodList}
-    </main>
-  );
+    if (foodItems.length > 0 && !loading) {
+        foodList = (
+            <div className={'container'}>
+                {foodItems?.map((value, index) => (
+                    <FoodCards key={index} foodItem={value} />
+                ))}
+            </div>
+        );
+    }
+
+    return (
+        <main className="app">
+            {/* header */}
+            <h1>Food Land</h1>
+
+            {/* search */}
+            <search className="search">
+                <input
+                    placeholder={'Search for foods'}
+                    value={searchTerm}
+                    onChange={(event) => {
+                        setSearchTerm(event.target.value);
+                    }}
+                />
+                <img
+                    src={SearchIcon}
+                    alt="Search"
+                    onClick={() => {
+                        searchFoodItems(searchTerm);
+                    }}
+                />
+            </search>
+
+            {/* foodList */}
+            {foodList}
+        </main>
+    );
 };
 
 function PageisLoading() {
-  return <h1> Page is loading.....</h1>;
+    return <h1> Page is loading.....</h1>;
 }
 
 export default App;
-
 ```
 
 #### 15. Lets try to search for our favorite food items here
