@@ -1,27 +1,26 @@
-
 ![reactlogo.png](images%2Freactlogo.png)
 <H1 align="center"> <strong>React Step by step workshop tutorial</strong></H1>
 
 
-## Get started  🚀
+## 1. Get started  🚀
 
 ![signin.png](images%2Fsignin.png)
 
 
-### Navigate to stackblitz.com
+### 2. Navigate to stackblitz.com
 
 ![signWithGithub.png](images%2FsignWithGithub.png)
 click continue with Github
 
-## Enter the userid and password for github
+## 3. Enter the userid and password for github
 
 ![enteruserIdAndPwd.png](images%2FenteruserIdAndPwd.png)
 
-### Click new project
+### 4. Click new project
 
 ![selectNewProject.png](images%2FselectNewProject.png)
 
-### Choose FrontEnd and then React js
+### 5. Choose FrontEnd and then React js
 
 ![ChooseReact.png](images%2FChooseReact.png)
 
@@ -36,7 +35,7 @@ you will be able to see the counter incrementing.
 
 ![firstBuildSuccess.png](images%2FfirstBuildSuccess.png)
 
-#### Lets quickly understand how counter and usestate works here
+#### 6.  Lets quickly understand how counter and usestate works here
 
 Open App.jsx file to understand more details
 ![counterAndUsestate.png](images%2FcounterAndUsestate.png)
@@ -65,6 +64,7 @@ export default App;
 
 ```
 
+#### 7.  Understand how counter works
 I want to show you how the counter works. Lets take a simple example
 where we dont use "usestate" to increment counter
 Replace App.jsx with below set of code
@@ -105,28 +105,30 @@ Now you see the counter getting printed in console but its not rendered
 in the DOM.
 ![console_log_counter.png](images%2Fconsole_log_counter.png)
 
+
+
 Now replace App.jsx with below set of code.
 ```jsx
 import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(0);
+    console.log('rendering app',counter);
 
-  const clickHandler = () => {
-    setCounter(counter + 1);
-  };
+    const clickHandler = () => {
+        setCounter(counter + 1);
+    };
 
-  return (
-    <>
-      <h1>Hello Welcome to women who code</h1>
-      <button onClick={clickHandler}>click me {counter}</button>
-    </>
-  );
+    return (
+        <>
+            <h1>Hello Welcome to women who code</h1>
+            <button onClick={clickHandler}>click me {counter}</button>
+        </>
+    );
 }
 
 export default App;
-
 ```
 
 Now you see the counter value incrementing in the DOM.
@@ -152,6 +154,8 @@ come back to do the full fledged development.
 
 ![openPreviewNewTab.png](images%2FopenPreviewNewTab.png)
 
+#### 8.  Understand fetch and asynchronous calls
+
 We will be using open api url to fetch food items
 from below sample. Let's try to hit this url to see the results.
 https://world.openfoodfacts.org/cgi/search.pl?search_terms=burger&page=1&page_size=10&json=1
@@ -164,33 +168,36 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [foodItems, setFoodItems] = useState([]);
+    const [foodItems, setFoodItems] = useState([]);
+    console.log('rendering component fooditems', foodItems);
 
-  const searchFoodItems = async () => {
-    try {
-      const foodName = 'burger';
-      const response = await fetch(
-        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
-      );
-      const data = await response.json();
-      setFoodItems(data.products);
-      console.log('foodItems', foodItems);
-    } catch (error) {
-      console.error('Error fetching food items:', error);
-    }
-  };
+    const searchFoodItems = async () => {
+        try {
+            const foodName = 'burger';
+            const response = await fetch(
+                `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
+            );
+            const data = await response.json();
+            console.log('data json',data);
+            setFoodItems(data.products);
 
-  return (
-    <>
-      <button onClick={searchFoodItems}>fetch food</button>
-      <div className="container">
-        <div>{JSON.stringify(foodItems)}</div>
-      </div>
-    </>
-  );
+        } catch (error) {
+            console.error('Error fetching food items:', error);
+        }
+    };
+
+    return (
+        <>
+            <button onClick={searchFoodItems}>fetch food</button>
+            <div className="container">
+                <div>{JSON.stringify(foodItems)}</div>
+            </div>
+        </>
+    );
 }
 
 export default App;
+
 
 ```
 You will be able to see a simple page with a single button 
@@ -214,7 +221,9 @@ so it will take 5-7 seconds to get list back.
 ![foodListRawJson.png](images%2FfoodListRawJson.png)
 Now lets simplify it to just print the product name 
 by adding below code to loop through fooditems using map method
-and print H1 heading tag for each food name.
+and print h1 heading tag for each food name.
+
+#### 9.  Print simple product name in a list
 
 Replace App.jsx code with the below set of code.
 
@@ -257,7 +266,7 @@ export default App;
 
 ```
 
-##### Unique list error
+##### 10. Unique list error
 
 When you do so,
 you will start to see some warnings in the console as shown below.
@@ -313,7 +322,7 @@ export default App;
 
 Now you will see the warning has disappeared.
 
-### Separate FoodCards jsx
+### 11. Separate FoodCards jsx
 
 Now lets do one thing. We plug out food items card to a separate
 jsx component. This will make the code simple and readable and follow React 
@@ -393,7 +402,7 @@ Note that we have changed the highlighted lines of code in App.jsx
 We have also imported the FoodCards
 ![foodCardimport.png](images%2FfoodCardimport.png)
 
-#### Food data interesting points
+#### 12. Food data interesting points
 * image_front_url
 * product_name
 * quantity
@@ -444,7 +453,7 @@ and authoring can be seen.
 
 ![foodcards_moreattrs.png](images%2Ffoodcards_moreattrs.png)
 
-## Better user experience with asynchronous call
+## 13. Better user experience with asynchronous call
 Now we have refined the code to make it a bit more readable
 and also introduced the concept of loading with asynchronous call.
 
@@ -525,7 +534,7 @@ export default App;
 
 ```
 
-### Make Food search more dynamic
+### 14. Make Food search more dynamic
 All this time we only see results for burger. 
 Lets add a search box with search icon
 
@@ -634,7 +643,7 @@ export default App;
 
 ```
 
-#### Lets try to search for our favorite food items here
+#### 15. Lets try to search for our favorite food items here
 ![searchRandom.png](images%2FsearchRandom.png)
 
 You are almost there. Now for a final touch to add some colors and beauty
