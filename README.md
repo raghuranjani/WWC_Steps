@@ -232,37 +232,40 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [foodItems, setFoodItems] = useState([]);
+    const [foodItems, setFoodItems] = useState([]);
+    console.log('rendering food items', foodItems);
 
-  const searchFoodItems = async () => {
-    try {
-      const foodName = 'burger';
-      const response = await fetch(
-        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
-      );
-      const data = await response.json();
-      setFoodItems(data.products);
-      console.log('foodItems', foodItems);
-    } catch (error) {
-      console.error('Error fetching food items:', error);
-    }
-  };
+    const searchFoodItems = async () => {
+        try {
+            const foodName = 'burger';
+            const response = await fetch(
+                `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${foodName}&page=1&page_size=10&json=1`
+            );
+            const data = await response.json();
+            console.log('data', data);
+            setFoodItems(data.products);
 
-  return (
-    <>
-      <button onClick={searchFoodItems}>fetch food</button>
-      <div className="container">
-        <div>
-          {foodItems?.map((foodItem) => {
-            return <h1>{foodItem.product_name}</h1>;
-          })}
-        </div>
-      </div>
-    </>
-  );
+        } catch (error) {
+            console.error('Error fetching food items:', error);
+        }
+    };
+
+    return (
+        <>
+            <button onClick={searchFoodItems}>fetch food</button>
+            <div className="container">
+                <div>
+                    {foodItems?.map((foodItem) => {
+                        return <h1>{foodItem.product_name}</h1>;
+                    })}
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default App;
+
 
 ```
 
@@ -285,7 +288,8 @@ import './App.css';
 
 function App() {
   const [foodItems, setFoodItems] = useState([]);
-
+  console.log('rendering food items', foodItems);
+  
   const searchFoodItems = async () => {
     try {
       const foodName = 'burger';
@@ -538,7 +542,9 @@ export default App;
 All this time we only see results for burger. 
 Lets add a search box with search icon
 
-create search.svg file and copy below code
+create search.svg inside src folder
+⚠️ (usually we create images inside asset folder, since this is a simple tutorial lets created inside src folder) 
+file and copy below code
 ![createFile.png](images%2FcreateFile.png)
 
 ![nameFile.png](images%2FnameFile.png)
