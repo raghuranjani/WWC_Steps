@@ -8,6 +8,7 @@ newParagraph.textContent = 'Another comment';
 document.getElementById('root').append(newParagraph);
 ```
 
+Navigate to https://www.jsplayground.dev/
 ### Understand different ES6 concepts
 1. Let , const and var
 2. arrow functions
