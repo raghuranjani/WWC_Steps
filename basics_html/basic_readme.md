@@ -8,7 +8,7 @@ newParagraph.textContent = 'Another comment';
 document.getElementById('root').append(newParagraph);
 ```
 
-### Understand different concepts
+### Understand different ES6 concepts
 1. Let , const and var
 2. arrow functions
 3. array destructuring
@@ -17,7 +17,7 @@ document.getElementById('root').append(newParagraph);
 
 
 
-## Understand const
+## 1. Understand const
 #### const is immutable
 ```javascript
 const greet = "hello world";
@@ -25,7 +25,7 @@ greet = "somethingelse"
 
 ```
 
-## Understand block scope for let
+## 2. Understand block scope for let
 #### this results in error since let is block scope
 ```javascript
 function greet(){
@@ -59,7 +59,7 @@ function greet(){
 greet();
 ```
 
-### understand hoisting
+## 3. understand hoisting
 #### with var - no error just undefined
 ```javascript
 console.log(testvar);
@@ -72,7 +72,7 @@ console.log(testvar);
 let testvar = 'hello'
 ```
 
-## understand redeclaration
+## 4. understand redeclaration
 
 #### With var - no error
 ```javascript
@@ -90,7 +90,7 @@ console.log(hello);
 ```
 
 
-#### Understand arrow functions
+## 5. Understand arrow functions
 ```javascript
 function greet(){
   console.log('hello world')
@@ -102,7 +102,7 @@ greet()
 greet1()
 ```
 
-#### Understand array destructuring
+## 6. Understand array destructuring
 ```javascript
 const testarr = [1, "one", ()=>{console.log('hello')}]
 
@@ -113,7 +113,7 @@ console.log(first);
 third()
 ```
 
-#### Understand object destructuring
+## 7. Understand object destructuring
 ```javascript
 const person = {
     name : "megha",
@@ -127,3 +127,10 @@ console.log(rest);
 console.log('name',name)
 ```
 
+## 8. String literals
+
+```javascript
+const name = 'John Doe'
+const greet = `hello ${name}`
+console.log(greet)
+```
