@@ -43,7 +43,7 @@ function greet(){
 greet();
 ```
 
-## Understand block scope for var
+## Understand global/fn scope for var
 ## since var has function scope it will display value
 ```javascript
 function greet(){
@@ -60,35 +60,7 @@ function greet(){
 greet();
 ```
 
-## 3. understand hoisting
-#### with var - no error just undefined
-```javascript
-console.log(testvar);
-var testvar = 'hello'
-```
 
-#### with let - throw error
-```javascript
-console.log(testvar);
-let testvar = 'hello'
-```
-
-## 4. understand redeclaration
-
-#### With var - no error
-```javascript
-var hello = 'hello';
-var hello = 'nonhello';
-console.log(hello);
-```
-
-## with let
-we see syntax error
-```javascript
-var hello = 'hello';
-var hello = 'nonhello';
-console.log(hello);
-```
 
 
 ## 5. Understand arrow functions
@@ -102,7 +74,7 @@ const greet1 = () => {console.log('hello world2')}
 greet()
 greet1()
 ```
-
+![array_destructure.png](array_destructure.png)
 ## 6. Understand array destructuring
 ```javascript
 const testarr = [1, "one", ()=>{console.log('hello')}]
@@ -114,6 +86,7 @@ console.log(first);
 third()
 ```
 
+![object_destructure.png](object_destructure.png)
 ## 7. Understand object destructuring
 ```javascript
 const person = {
