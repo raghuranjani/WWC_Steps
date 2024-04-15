@@ -668,3 +668,9 @@ Update App.css with below code.
 ![finalSearchWithDosa.png](images%2FfinalSearchWithDosa.png)
 
 🎉 ## Congratulations you have successfully completed the workshop
+
+### some important courses to refer for future
+1. https://dontimitateunderstand.com/p/understanding-react
+2. https://www.udemy.com/course/understand-javascript/
+3. https://www.udemy.com/course/understanding-html-and-css/
+4. https://www.udemy.com/course/javascript-understanding-es6-and-beyond/
